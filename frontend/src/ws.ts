@@ -4,7 +4,7 @@ class StreamClient {
   private ws: WebSocket | null = null;
   private listeners: Listener[] = [];
   private isConnecting = false;
-  private url = "ws://127.0.0.1:8080/ws/stream";
+  private url = process.env.NEXT_PUBLIC_WS_URL || "ws://127.0.0.1:8000/ws/stream";
 
   connect() {
     if (typeof window === "undefined") return;
