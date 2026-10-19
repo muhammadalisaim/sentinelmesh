@@ -1,4 +1,10 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api/v1";
+const getApiBase = () => {
+  if (process.env.NEXT_PUBLIC_API_URL) return process.env.NEXT_PUBLIC_API_URL;
+  if (typeof window !== "undefined" && window.location.hostname) {
+    return `${window.location.protocol}//${window.location.hostname}:8000/api/v1`;
+  }
+  return "http://localhost:8000/api/v1";
+};
 
 export async function fetchJson(endpoint: string, options: RequestInit = {}) {
   const token = typeof window !== "undefined" ? localStorage.getItem("sentinel_token") : null;
@@ -11,7 +17,8 @@ export async function fetchJson(endpoint: string, options: RequestInit = {}) {
     headers["Authorization"] = `Bearer ${token}`;
   }
 
-  const res = await fetch(`${API_BASE}${endpoint}`, {
+  const apiBase = getApiBase();
+  const res = await fetch(`${apiBase}${endpoint}`, {
     ...options,
     headers,
   });
@@ -70,7 +77,7 @@ export const api = {
   },
 
   getDownloadPdfUrl: (incidentId: string, lang = "en") => {
-    return `${API_BASE}/reports/${incidentId}/pdf?lang=${lang}`;
+    return `${getApiBase()}/reports/${incidentId}/pdf?lang=${lang}`;
   },
 
   // Metrics / Benchmark

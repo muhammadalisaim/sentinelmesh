@@ -4,7 +4,14 @@ class StreamClient {
   private ws: WebSocket | null = null;
   private listeners: Listener[] = [];
   private isConnecting = false;
-  private url = process.env.NEXT_PUBLIC_WS_URL || "ws://127.0.0.1:8000/ws/stream";
+  private getUrl() {
+    if (process.env.NEXT_PUBLIC_WS_URL) return process.env.NEXT_PUBLIC_WS_URL;
+    if (typeof window !== "undefined" && window.location.hostname) {
+      const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
+      return `${proto}//${window.location.hostname}:8000/ws/stream`;
+    }
+    return "ws://localhost:8000/ws/stream";
+  }
 
   connect() {
     if (typeof window === "undefined") return;
@@ -14,7 +21,7 @@ class StreamClient {
 
     this.isConnecting = true;
     try {
-      this.ws = new WebSocket(this.url);
+      this.ws = new WebSocket(this.getUrl());
 
       this.ws.onopen = () => {
         this.isConnecting = false;
