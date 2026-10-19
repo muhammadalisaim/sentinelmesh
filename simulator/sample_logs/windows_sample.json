@@ -1,0 +1,21 @@
+[
+  {
+    "EventID": 4688,
+    "Computer": "workstation-eng-04",
+    "EventData": {
+      "TargetUserName": "saim.ali",
+      "NewProcessName": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -enc SQBFAFgA...",
+      "ParentProcessName": "OUTLOOK.EXE"
+    }
+  },
+  {
+    "EventID": 3,
+    "Computer": "workstation-eng-04",
+    "EventData": {
+      "TargetUserName": "saim.ali",
+      "DestinationIp": "185.220.101.5",
+      "DestinationPort": 443,
+      "Protocol": "tcp"
+    }
+  }
+]

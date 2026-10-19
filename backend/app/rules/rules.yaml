@@ -1,0 +1,45 @@
+rules:
+  - id: "RULE-SSH-BRUTE"
+    name: "SSH Brute Force Credential Guessing"
+    description: "Detects burst of failed SSH authentications from single source IP"
+    event_type: "ssh_login_failed"
+    threshold: 5
+    window_seconds: 120
+    severity: "high"
+    mitre_technique: "T1110.001"
+
+  - id: "RULE-SSH-SUCCESS"
+    name: "SSH Compromise Followed by Sudo Elevation"
+    description: "Detects successful login and privilege escalation on host under attack"
+    event_type: "privilege_escalation_sudo"
+    threshold: 1
+    window_seconds: 60
+    severity: "critical"
+    mitre_technique: "T1078.003"
+
+  - id: "RULE-WEB-SQLI"
+    name: "SQL Injection Attack Attempt"
+    description: "Detects web requests containing SQL manipulation directives"
+    event_type: "sqli_attempt"
+    threshold: 2
+    window_seconds: 180
+    severity: "high"
+    mitre_technique: "T1190"
+
+  - id: "RULE-WEBSHELL"
+    name: "Web Shell Upload or Execution"
+    description: "Detects access or interactive command execution on web shells"
+    event_type: "webshell_activity"
+    threshold: 1
+    window_seconds: 60
+    severity: "critical"
+    mitre_technique: "T1505.003"
+
+  - id: "RULE-C2-BEACON"
+    name: "Suspicious PowerShell C2 Beaconing"
+    description: "Detects suspicious process spawning outbound network connection"
+    event_type: "win_suspicious_process_spawn"
+    threshold: 1
+    window_seconds: 60
+    severity: "critical"
+    mitre_technique: "T1071.001"
