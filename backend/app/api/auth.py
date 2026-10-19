@@ -13,10 +13,11 @@ router = APIRouter()
 def login(login_data: schemas.UserLogin, db: Session = Depends(get_db)):
     user = crud.authenticate_user(db, email=login_data.email, password=login_data.password)
     if not user:
-        # Pre-seed default analyst or admin if DB was newly initialized
-        if login_data.email in ["admin@sentinelmesh.ai", "analyst@sentinelmesh.ai"] and login_data.password in ["sentinel123", "admin123"]:
-            role = "admin" if "admin" in login_data.email else "analyst"
-            user = crud.create_user(db, email=login_data.email, password=login_data.password, role=role, full_name="SOC Officer")
+        # Pre-seed default analyst or admin or lead officer if DB was newly initialized
+        if login_data.email in ["admin@sentinelmesh.ai", "analyst@sentinelmesh.ai", "saim@sentinelmesh.ai"] and login_data.password in ["sentinel123", "admin123"]:
+            role = "admin" if "admin" in login_data.email or "saim" in login_data.email else "analyst"
+            full_name = "Muhammad Ali Saim" if "saim" in login_data.email else ("SOC Admin" if role == "admin" else "SOC Analyst")
+            user = crud.create_user(db, email=login_data.email, password=login_data.password, role=role, full_name=full_name)
         else:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,

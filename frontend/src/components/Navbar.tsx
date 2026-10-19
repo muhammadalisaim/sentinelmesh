@@ -77,24 +77,28 @@ export const Navbar: React.FC<Props> = ({ onToggleMobileMenu, mobileMenuOpen }) 
           <span className="hidden xs:inline">Simulator</span>
         </Link>
 
-        {/* Officer Avatar */}
-        <div className="flex items-center gap-3 pl-2 sm:pl-3 border-l border-white/10">
-          <div className="relative w-9 h-9 rounded-xl overflow-hidden ring-2 ring-cyan-500/50 shadow-lg shadow-cyan-950/60 shrink-0">
+        {/* Officer Avatar & Session Link */}
+        <Link
+          href="/login"
+          title="Session: Click to Lock or Switch SOC Officer"
+          className="flex items-center gap-3 pl-2 sm:pl-3 border-l border-white/10 group hover:opacity-95 transition"
+        >
+          <div className="relative w-9 h-9 rounded-xl overflow-hidden ring-2 ring-cyan-500/50 group-hover:ring-cyan-400 shadow-lg shadow-cyan-950/60 shrink-0 transition">
             <img
               src="/profile.jpg"
               alt="Muhammad Ali Saim"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform"
             />
             <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-slate-950" />
           </div>
           <div className="hidden lg:block text-left text-xs">
-            <div className="font-extrabold text-slate-100">Muhammad Ali Saim</div>
+            <div className="font-extrabold text-slate-100 group-hover:text-cyan-300 transition-colors">Muhammad Ali Saim</div>
             <div className="text-[10px] text-cyan-400 font-mono font-semibold flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Lead SOC Officer
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </header>
   );
