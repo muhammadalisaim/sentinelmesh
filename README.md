@@ -1,5 +1,9 @@
 # 🛡️ SentinelMesh: Autonomous AI SOC on AMD GPU
 
+<p align="center">
+  <img src="docs/sentinelmesh_cover_16_9.jpg" alt="SentinelMesh Banner" width="100%" style="border-radius: 12px;" />
+</p>
+
 [![AMD ROCm](https://img.shields.io/badge/AMD-ROCm%206.2-ED1C24?style=for-the-badge&logo=amd&logoColor=white)](https://rocm.docs.amd.com/)
 [![vLLM](https://img.shields.io/badge/vLLM-PagedAttention-06B6D4?style=for-the-badge)](https://vllm.ai/)
 [![Hackathon](https://img.shields.io/badge/AMD%20Developer%20Hackathon-ACT%20III%20(lablab.ai)-7C3AED?style=for-the-badge)](https://lablab.ai/)
@@ -9,7 +13,9 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=for-the-badge)](LICENSE)
 
 > **Autonomous Multi-Agent Security Operations Center accelerated on AMD Instinct GPUs.**  
-> Continuous log triage, adversary timeline reconstruction, threat intelligence correlation, human-gated containment, and bilingual (English + Urdu Nastaliq) incident reporting with **zero cloud data egress**.
+> Continuous log triage, adversary timeline reconstruction, threat intelligence correlation, human-gated containment, and bilingual (English + Urdu Nastaliq) incident reporting with **zero cloud data egress**.  
+> 📑 **Pitch Deck Presentation:** [View SentinelMesh Slides (PDF)](docs/SentinelMesh_Pitch_Deck.pdf)
+
 
 ---
 
